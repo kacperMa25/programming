@@ -21,12 +21,12 @@ plt.show()
 
 # zadanie 4
 # Twierdzenie to nazywa się Twierdzeniem o próbkowaniu i mówi,
-# że częstotliwość próbkowania musi być co najmniej 2 razy większa
-# niż częstotliwość sygnału
+# że częstotliwość próbkowania musi być co najmniej 2 razy większa
+# niż częstotliwość sygnału
 
 
 # zadanie 5
-# zjawisko to nazywa się aliasingiem co sprawia
+# zjawisko to nazywa się aliasingiem co sprawia
 # pojawianie się fałszywych częstotliwości
 
 
@@ -51,7 +51,6 @@ methods = [
     "lanczos",
 ]
 
-# Fixing random state for reproducibility
 np.random.seed(19680801)
 
 grid = np.random.rand(4, 4)
@@ -69,3 +68,53 @@ plt.tight_layout()
 plt.show()
 
 print(grid.shape)
+
+print("Wymiary obrazu:", grid.shape)
+print("Liczba kanałów (np. RGB):",
+      grid.shape[2])
+
+if len(grid.shape) == 3 and grid.shape[2] == 3:
+    gray1 = ((np.max(grid, axis=2) + np.min(grid, axis=2)) / 2).astype(np.uint8)
+    gray2 = np.mean(grid, axis=2).astype(np.uint8)
+    gray3 = (0.21 * grid[:, :, 0] + 0.72 * grid[:, :, 1] + 0.07 * grid[:, :, 2]).astype(np.uint8)
+else:
+    gray1 = gray2 = gray3 = grid
+
+plt.figure(figsize=(12, 4))
+
+for i, gray in enumerate([gray1, gray2, gray3]):
+    plt.subplot(1, 3, i+1)
+    plt.hist(gray.ravel(), bins=256, color='gray')
+    plt.title(f"Histogram metody {i+1}")
+    plt.xlabel("Wartość piksela")
+    plt.ylabel("Liczba pikseli")
+
+hist, bins = np.histogram(gray3, bins=16)
+print("Przedziały histogramu:", bins)
+
+midpoints = ((bins[:-1] + bins[1:]) / 2).astype(np.uint8)
+print("Środki przedziałów:", midpoints)
+
+gray_quantized = np.digitize(gray3, bins) - 1
+gray_quantized = np.clip(gray_quantized, 0, len(midpoints) - 1)
+quantized_img = midpoints[gray_quantized]
+
+images = [gray1, gray2, gray3, quantized_img]
+titles = ["Jasność", "Średnia", "Luminancja", "Zredukowana (16 kolorów)"]
+
+plt.figure(figsize=(14, 8))
+for i, img in enumerate(images):
+    plt.subplot(2, 4, i+1)
+    plt.imshow(img, cmap='gray')
+    plt.title(titles[i])
+    plt.axis('off')
+
+    plt.subplot(2, 4, i+5)
+    plt.hist(img.ravel(), bins=256, color='gray')
+    plt.title(f"Histogram {titles[i]}")
+
+plt.tight_layout()
+plt.show()
+
+plt.tight_layout()
+plt.show()
