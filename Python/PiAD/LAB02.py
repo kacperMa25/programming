@@ -20,7 +20,8 @@ print(df)
 # Zadanie 4
 print("\nZadanie4\n")
 df["combined-mpg"] = (df["highway-mpg"] + df["city-mpg"]) / 2
-print(df[["make", "city-mpg", "highway-mpg", "combined-mpg"]].groupby(["make"]).mean())
+print(df[["make", "city-mpg", "highway-mpg",
+      "combined-mpg"]].groupby(["make"]).mean())
 
 # Zadanie 5
 print("\nZadanie5\n")
@@ -88,7 +89,8 @@ _, axs = plt.subplots(1, 2)
 axs[0].plot(x_val2, gestosc2(x_val2), label="Funkcja gęstości szerokości")
 axs[0].scatter(x2, np.zeros_like(x2), label="Próbki", color="red")
 axs[0].legend()
-axs[1].plot(x_val, gestosc(x_val), label="Funkcja gęstości długości", color="green")
+axs[1].plot(x_val, gestosc(x_val),
+            label="Funkcja gęstości długości", color="green")
 axs[1].scatter(x, np.zeros_like(x), label="Próbki", color="red")
 axs[1].legend()
 
@@ -102,7 +104,8 @@ x_vals, x2_vals = np.meshgrid(
     np.linspace(x.min(), x.max(), 100), np.linspace(x2.min(), x2.max(), 100)
 )
 
-z_vals = gestosc_2d(np.vstack([x_vals.ravel(), x2_vals.ravel()])).reshape(100, 100)
+z_vals = gestosc_2d(
+    np.vstack([x_vals.ravel(), x2_vals.ravel()])).reshape(100, 100)
 plt.figure()
 plt.contour(x_vals, x2_vals, z_vals)
 plt.xlabel("Długość")

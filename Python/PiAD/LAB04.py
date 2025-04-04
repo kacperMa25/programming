@@ -1,9 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-#Część 1. Dyskretyzacja
+# Część 1. Dyskretyzacja
 
-#zadanie 1-2
+# zadanie 1-2
+
+
 def genSin(f, fs):
     t = np.linspace(0, 1, fs)
     return t, np.sin(2 * np.pi * f * t)
@@ -76,7 +78,7 @@ for ax, interp_method in zip(axs.flat, methods):
 plt.tight_layout()
 plt.show()
 
-#Część 2. Kwantyzacja
+# Część 2. Kwantyzacja
 # zadanie 2
 print("Wymiary obrazu:", grid.shape)
 
@@ -88,7 +90,8 @@ print("Liczba kanałów (np. RGB):",
 if len(grid.shape) == 3 and grid.shape[2] == 3:
     gray1 = ((np.max(grid, axis=2) + np.min(grid, axis=2)) / 2).astype(np.uint8)
     gray2 = np.mean(grid, axis=2).astype(np.uint8)
-    gray3 = (0.21 * grid[:, :, 0] + 0.72 * grid[:, :, 1] + 0.07 * grid[:, :, 2]).astype(np.uint8)
+    gray3 = (0.21 * grid[:, :, 0] + 0.72 * grid[:, :, 1] +
+             0.07 * grid[:, :, 2]).astype(np.uint8)
 else:
     gray1 = gray2 = gray3 = grid
 
@@ -104,11 +107,11 @@ for i, gray in enumerate([gray1, gray2, gray3]):
     plt.ylabel("Liczba pikseli")
 
 
-#zadanie 6
+# zadanie 6
 hist, bins = np.histogram(gray3, bins=16)
 print("Przedziały histogramu:", bins)
 
-#zadanie 7
+# zadanie 7
 midpoints = ((bins[:-1] + bins[1:]) / 2).astype(np.uint8)
 print("Środki przedziałów:", midpoints)
 
@@ -135,10 +138,10 @@ plt.tight_layout()
 plt.show()
 
 # Część 3. Binaryzacja
-#zadanie 1
+# zadanie 1
 img = plt.imread("niejednorodny.png")
 
-#zadanie 2
+# zadanie 2
 if img.shape[-1] == 4:
     img = img[:, :, :3]
 
@@ -150,10 +153,10 @@ plt.xlabel("Wartość piksela")
 plt.ylabel("Liczba pikseli")
 plt.show()
 
-#zadanie 3
+# zadanie 3
 threshold = np.mean(gray)
 
-#zadanie 4
+# zadanie 4
 binary_img = (gray > threshold).astype(np.uint8) * 255
 
 plt.figure(figsize=(12, 5))
