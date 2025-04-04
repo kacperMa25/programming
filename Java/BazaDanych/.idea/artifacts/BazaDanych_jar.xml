@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="BazaDanych:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/BazaDanych_jar</output-path>
+    <root id="archive" name="BazaDanych.jar">
+      <element id="module-output" name="BazaDanych" />
+    </root>
+  </artifact>
+</component>

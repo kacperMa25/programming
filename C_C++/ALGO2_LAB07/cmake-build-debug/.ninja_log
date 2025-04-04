@@ -1,0 +1,25 @@
+# ninja log v6
+2201	2293	1734351398363197112	LAB07	7d22a9aa9828b57
+281	2201	1734351396443104982	CMakeFiles/LAB07.dir/main.cpp.o	4da344dab30e3e6
+272	281	1734351396433104447	CMakeFiles/LAB07.dir/main.cpp.o.modmap	a96c9dda583ec880
+272	281	1734351396433104447	/home/kacper/Programming/Programming/CLionProjects/LAB07/cmake-build-debug/CMakeFiles/LAB07.dir/CXXModules.json	a96c9dda583ec880
+272	281	1734351396433104447	CMakeFiles/LAB07.dir/CXX.dd	a96c9dda583ec880
+6	271	1734351396169757034	CMakeFiles/LAB07.dir/main.cpp.o.ddi	f5512fde1f4e39cc
+5	276	1734355055446664438	CMakeFiles/LAB07.dir/main.cpp.o.ddi	f5512fde1f4e39cc
+276	285	1734355055716664432	CMakeFiles/LAB07.dir/CXX.dd	a96c9dda583ec880
+276	285	1734355055716664432	/home/kacper/Programming/Programming/CLionProjects/LAB07/cmake-build-debug/CMakeFiles/LAB07.dir/CXXModules.json	a96c9dda583ec880
+276	285	1734355055716664432	CMakeFiles/LAB07.dir/main.cpp.o.modmap	a96c9dda583ec880
+285	1780	1734355055726664432	CMakeFiles/LAB07.dir/main.cpp.o	4da344dab30e3e6
+1780	1822	1734355057223331063	LAB07	7d22a9aa9828b57
+1	114	1734355173839994930	CMakeFiles/LAB07.dir/main.cpp.o.ddi	f5512fde1f4e39cc
+114	118	1734355173953328261	CMakeFiles/LAB07.dir/CXX.dd	a96c9dda583ec880
+114	118	1734355173953328261	/home/kacper/Programming/Programming/CLionProjects/LAB07/cmake-build-debug/CMakeFiles/LAB07.dir/CXXModules.json	a96c9dda583ec880
+114	118	1734355173953328261	CMakeFiles/LAB07.dir/main.cpp.o.modmap	a96c9dda583ec880
+118	1043	1734355173956661594	CMakeFiles/LAB07.dir/main.cpp.o	4da344dab30e3e6
+1043	1082	1734355174883328239	LAB07	7d22a9aa9828b57
+3	233	1734358762436575421	CMakeFiles/LAB07.dir/main.cpp.o.ddi	f5512fde1f4e39cc
+233	239	1734358762666575416	CMakeFiles/LAB07.dir/CXX.dd	a96c9dda583ec880
+233	239	1734358762666575416	/home/kacper/Programming/Programming/CLionProjects/LAB07/cmake-build-debug/CMakeFiles/LAB07.dir/CXXModules.json	a96c9dda583ec880
+233	239	1734358762666575416	CMakeFiles/LAB07.dir/main.cpp.o.modmap	a96c9dda583ec880
+239	1501	1734358762673242083	CMakeFiles/LAB07.dir/main.cpp.o	4da344dab30e3e6
+1501	1539	1734358763933242052	LAB07	7d22a9aa9828b57

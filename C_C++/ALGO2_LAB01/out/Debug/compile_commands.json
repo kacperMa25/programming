@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/kacper/Programming/C_C++/LAB01/out/Debug",
+  "command": "/usr/bin/c++   -g -std=gnu++23 -o CMakeFiles/brudnopis.dir/55552.algo2.lab01.main.cpp.o -c /home/kacper/Programming/C_C++/LAB01/55552.algo2.lab01.main.cpp",
+  "file": "/home/kacper/Programming/C_C++/LAB01/55552.algo2.lab01.main.cpp",
+  "output": "CMakeFiles/brudnopis.dir/55552.algo2.lab01.main.cpp.o"
+}
+]

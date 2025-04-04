@@ -1,0 +1,3 @@
+/home/kacper/Programming/CLionProjects/LAB03/cmake-build-debug/CMakeFiles/LAB03.dir
+/home/kacper/Programming/CLionProjects/LAB03/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/kacper/Programming/CLionProjects/LAB03/cmake-build-debug/CMakeFiles/rebuild_cache.dir

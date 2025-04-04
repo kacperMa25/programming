@@ -1,0 +1,1 @@
+/usr/bin/c++ -g -Wl,--dependency-file=CMakeFiles/brudnopis.dir/link.d CMakeFiles/brudnopis.dir/55552.algo2.lab01.main.cpp.o -o brudnopis

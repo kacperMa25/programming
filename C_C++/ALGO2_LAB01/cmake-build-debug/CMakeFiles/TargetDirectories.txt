@@ -1,0 +1,3 @@
+/home/kacper/Programming/CLionProjects/LAB01/cmake-build-debug/CMakeFiles/brudnopis.dir
+/home/kacper/Programming/CLionProjects/LAB01/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/kacper/Programming/CLionProjects/LAB01/cmake-build-debug/CMakeFiles/rebuild_cache.dir

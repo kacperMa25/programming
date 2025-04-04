@@ -1,0 +1,18 @@
+{
+	"bmi-installation" : null,
+	"compiler-frontend-variant" : "GNU",
+	"compiler-id" : "GNU",
+	"compiler-simulate-id" : "",
+	"config" : "Debug",
+	"cxx-modules" : {},
+	"dir-cur-bld" : "/home/kacper/Programming/Programming/CLionProjects/LAB07/cmake-build-debug",
+	"dir-cur-src" : "/home/kacper/Programming/Programming/CLionProjects/LAB07",
+	"dir-top-bld" : "/home/kacper/Programming/Programming/CLionProjects/LAB07/cmake-build-debug",
+	"dir-top-src" : "/home/kacper/Programming/Programming/CLionProjects/LAB07",
+	"exports" : [],
+	"forward-modules-from-target-dirs" : [],
+	"include-dirs" : [],
+	"language" : "CXX",
+	"linked-target-dirs" : [],
+	"module-dir" : "/home/kacper/Programming/Programming/CLionProjects/LAB07/cmake-build-debug/CMakeFiles/LAB07.dir"
+}

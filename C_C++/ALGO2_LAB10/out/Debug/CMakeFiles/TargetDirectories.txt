@@ -1,0 +1,4 @@
+/home/kacper/Programming/C_C++/LAB10/out/Debug/CMakeFiles/LAB10.dir
+/home/kacper/Programming/C_C++/LAB10/out/Debug/CMakeFiles/run_with_args.dir
+/home/kacper/Programming/C_C++/LAB10/out/Debug/CMakeFiles/edit_cache.dir
+/home/kacper/Programming/C_C++/LAB10/out/Debug/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,1 @@
+/usr/bin/cc -Wl,--dependency-file=CMakeFiles/SO.dir/link.d CMakeFiles/SO.dir/main.c.o -o SO

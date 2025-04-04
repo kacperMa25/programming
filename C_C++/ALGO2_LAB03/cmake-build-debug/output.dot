@@ -1,0 +1,19 @@
+digraph BST {
+label="size= 8, height=5"
+node [shape=circle; fixedsize=true];
+29;
+29 -> 22 [label="L"];
+29 -> 39 [label="R"];
+22;
+22 -> 18 [label="L"];
+18;
+39;
+39 -> 34 [label="L"];
+39 -> 42 [label="R"];
+34;
+42;
+42 -> 94 [label="R"];
+94;
+94 -> 65 [label="L"];
+65;
+}

@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/kacper/Programming/C_C++/LAB08/out/Debug",
+  "command": "/usr/bin/c++   -g -std=gnu++20 -o CMakeFiles/LAB08.dir/main.cpp.o -c /home/kacper/Programming/C_C++/LAB08/main.cpp",
+  "file": "/home/kacper/Programming/C_C++/LAB08/main.cpp",
+  "output": "CMakeFiles/LAB08.dir/main.cpp.o"
+}
+]
