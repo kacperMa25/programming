@@ -1,0 +1,104 @@
+import matplotlib.pyplot as plp
+
+def readFromFile(filename):
+    try:
+        with open(filename, "r") as f:
+            return f.read()
+    except FileNotFoundError:
+        print("File not found")
+    except IOError:
+        print("In/out error")
+
+
+def writeToFile(filename, data):
+    try:
+        with open(filename, "w") as f:
+            f.write(str(data))
+    except FileNotFoundError:
+        print("File not found")
+
+
+class Grupy:
+    def __init__(self, filename):
+        retrivedData = readFromFile(filename)
+        if retrivedData is not None or "":
+            self.__data = eval(retrivedData)
+        else:
+            self.__data = dict()
+
+    def addStudent(self, student, group):
+        if self.__data.get(group) is None:
+            self.__data[group] = []
+        self.__data[group].append(student)
+
+    def removeStudent(self, student, group):
+        if self.__data.get(group) is not None:
+            if student in self.__data[group]:
+                self.__data[group].remove(student)
+
+
+    def addGroup(self, group):
+        if self.__data.get(group) is None:
+            self.__data[group] = []
+
+    def removeGroup(self, group):
+        if self.__data.get(group) is not None:
+            del self.__data[group]
+
+    def listGroups(self):
+        for group in self.__data.keys():
+            print(group, ": ", self.__data[group], sep="")
+
+    def makeBar(self):
+        bins = self.__data.keys()
+        freq = []
+        for group in self.__data.values():
+            freq.append(len(group))
+        plp.figure()
+        plp.bar(bins, freq, width=0.5, edgecolor="black", color="blue")
+        plp.xlabel("Group")
+        plp.ylabel("Students")
+        plp.title("Student Distribution")
+        plp.show()
+
+
+class Student:
+    def __init__(self, Imie, Nazwisko):
+        self.__imie = Imie
+        self.__nazwisko = Nazwisko
+
+    @property
+    def imie(self):
+        return self.__imie
+    @property
+    def nazwisko(self):
+        return self.__nazwisko
+
+class AdvancedGroups(Grupy):
+    def __init__(self, filename):
+        super().__init__(filename)
+        self.__data = dict()
+
+    def addStudent(self, imie, nazwisko, group):
+        if self.__data.get(group) is not None:
+            self.__data[group].append(Student(imie, nazwisko))
+        else :
+            self.__data[group] = Student(imie, nazwisko)
+
+grupy = {"223A" : ["Ktostam", "JEszczeKtosInny"], "223B" : ["Atupustat"]}
+
+writeToFile(".venv/slownik", grupy)
+
+grupy1 = Grupy(".venv/slownik")
+grupy1.addStudent("akcper", "221A")
+grupy1.addStudent("Adam", "221A")
+grupy1.addStudent("maciek", "223A")
+grupy1.removeStudent("akcper", "221A")
+grupy1.removeGroup("223A")
+grupy1.listGroups()
+
+grupy1.makeBar()
+
+grupy2 = AdvancedGroups("")
+grupy2.addStudent("akcper", "malecki", "221A")
+costam = 0
