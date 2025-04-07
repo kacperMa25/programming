@@ -170,5 +170,4 @@ plt.subplot(1, 2, 2)
 plt.imshow(binary_img, cmap="gray")
 plt.title("Binaryzacja")
 plt.axis("off")
-
 plt.show()

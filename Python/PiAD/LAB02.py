@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import scipy as sp
 
+
 # Zadanie 1
 print("\nZadanie1\n")
 df = pd.DataFrame({"x": [1, 2, 3, 4, 5], "y": ["a", "b", "a", "b", "b"]})
