@@ -23,7 +23,7 @@ def freq(x, prob=True):
 def freq2(x, y, prob=True):
     slownik = {}
 
-    for x_values, y_values in x, y:
+    for x_values, y_values in zip(x, y):
         if (x_values, y_values) not in slownik:
             slownik[(x_values, y_values)] = 1.0
         else:
@@ -34,15 +34,27 @@ def freq2(x, y, prob=True):
     if prob:
         ni = [licz / len(x) for licz in ni]
 
-    return np.unique(x), np.unique(y), ni
+    return list(np.unique(x)), list(np.unique(y)), ni
 
 
 def entropy(x):
-    _, ni = freq(x, prob=True)
+    _, pi = freq(x)
     I_X = 0
-    for i in range(len(ni)):
-        I_X -= ni[i] * np.log2(ni[i])
+    for i in range(len(pi)):
+        I_X -= pi[i] * np.log2(pi[i])
     return I_X
 
 
-print(entropy([1, 1, 1, 1, 1, 1, 1, 1, 3, 2, 2, 2, 2, 2, 2, 3, 3, 4]))
+def conditionalEntropy(x, y):
+    pass
+
+
+def infoGain(x, y):
+    return entropy(y) - conditionalEntropy(x, y)
+
+
+x = ['słońce', 'słońce', 'deszcz', 'deszcz', 'słońce']
+y = ['tak', 'tak', 'nie', 'nie', 'tak']
+
+ig = infoGain(x, y)
+print(f"Przyrost informacji: {ig:.4f}")

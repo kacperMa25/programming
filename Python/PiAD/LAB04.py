@@ -139,7 +139,7 @@ plt.show()
 
 # Część 3. Binaryzacja
 # zadanie 1
-img = plt.imread("niejednorodny.png")
+img = plt.imread("images/niejednorodny.png")
 
 # zadanie 2
 if img.shape[-1] == 4:

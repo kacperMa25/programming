@@ -129,7 +129,8 @@ M = np.arange(24, dtype=np.int32).reshape(4, 6)
 strides = M.strides
 yellow = np.lib.stride_tricks.as_strided(M, shape=(2, 3), strides=strides)
 
-green = np.lib.stride_tricks.as_strided(M[:, 3:], shape=(2, 3), strides=strides)
+green = np.lib.stride_tricks.as_strided(M[:, 3:],
+                                        shape=(2, 3), strides=strides)
 
 blue = np.lib.stride_tricks.as_strided(M[2:, :], shape=(2, 3), strides=strides)
 red = np.lib.stride_tricks.as_strided(M[2:, 3:], shape=(2, 3), strides=strides)

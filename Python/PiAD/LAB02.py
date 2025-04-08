@@ -16,7 +16,7 @@ print(df.value_counts())
 
 # Zadanie 3
 print("\nZadanie3\n")
-df = pd.read_csv("autos.csv")
+df = pd.read_csv("csv/autos.csv")
 print(df)
 # Zadanie 4
 print("\nZadanie4\n")
