@@ -13,16 +13,16 @@ def wiPCA(X, dim):
     eigenVals = eigenVals[idx]
     eigenVecs = eigenVecs[:, idx]
     components = eigenVecs[:, :dim]
-    
+
     return X_centered @ components, eigenVecs, eigenVals, mean_vec
 
 
 # zadanie 1
 # a) Generowanie macierzy losowej
 X = np.random.randn(200, 2)
-X[:, 1] = 2 * X[:, 0] + 0.5 * np.random.randn(200)
+X[:, 1] = 0.75 * X[:, 0] + np.random.randn(200)
 
-# b) Wizualizacja
+# b) Wizualizacja losowych punktów
 plt.scatter(X[:, 0], X[:, 1], color='green')
 plt.xlabel("X1")
 plt.ylabel("X2")
@@ -32,24 +32,25 @@ plt.axis("equal")
 XReduced, eigVecs, eigVals, meanVec = wiPCA(X, 1)
 
 # Rzut punktów na pierwszą składową
-first_component = eigVecs[:, 0]
-projection = ((X - meanVec) @ first_component[:, None]) * first_component + meanVec
+firstComponent = eigVecs[:, 0]
+projection = ((X - meanVec) @ firstComponent[:, None]) * firstComponent + meanVec
 
+# Wizualicja rzutowania
 plt.scatter(projection[:, 0], projection[:, 1], color='red')
 plt.title("PCA Zadanie 1.")
 plt.axis("equal")
 
 # Wizualizacja wektorów własnych
-origin = meanVec
+pos00 = meanVec
 vec = eigVecs[:, 0]
 length = np.sqrt(eigVals[0]) * 2
-plt.quiver(origin[0], origin[1],
+plt.quiver(pos00[0], pos00[1],
             vec[0] * length, vec[1] * length,
             angles='xy', scale_units='xy', scale=1, color='black')
 
 vec = eigVecs[:, 1]
 length = np.sqrt(eigVals[1]) * 2
-plt.quiver(origin[0], origin[1],
+plt.quiver(pos00[0], pos00[1],
             vec[0] * length, vec[1] * length,
             angles='xy', scale_units='xy', scale=1, color='black')
 
@@ -64,25 +65,26 @@ X = iris.data
 y = iris.target
 
 # b) PCA
-X_pca, components, vals, meanVec = wiPCA(X, 2)
+Xpca, dims, vals, meanVec = wiPCA(X, 2)
 
 pca = PCA(2)
-X_pcaOrig = pca.fit_transform(X)
+XpcaOrig = pca.fit_transform(X)
 
 # c) Wizualizacja
-plt.figure(figsize=(10, 10))
+plt.figure(figsize=(10, 8))
 plt.subplot(2, 1, 1)
-plt.scatter(X_pca[:, 0], X_pca[:, 1], c=y, cmap='viridis', edgecolor='k')
+plt.scatter(Xpca[:, 0], Xpca[:, 1], c=y, cmap='viridis')
 plt.title("wiPCA - Zadanie 2.")
 plt.xlabel("PC1")
 plt.ylabel("PC2")
 
 plt.subplot(2, 1, 2)
-plt.scatter(X_pcaOrig[:, 0], X_pcaOrig[:, 1], c=y, cmap='viridis', edgecolor='k')
+plt.scatter(XpcaOrig[:, 0], XpcaOrig[:, 1], c=y, cmap='viridis')
 plt.title("libPCA - Zadanie 2.")
 plt.xlabel("PC1")
 plt.ylabel("PC2")
 
+plt.tight_layout()
 plt.savefig("plots/plot_LAB07_02.png")
 plt.show()
 
@@ -94,32 +96,15 @@ X = digits.data
 y = digits.target
 
 # b) PCA
-X_pca2, _, _, _ = wiPCA(X, 2)
-X_pcaOrig = pca.fit_transform(X)
+Xpca, _, _, _ = wiPCA(X, 2)
+XpcaOrig = pca.fit_transform(X)
 
-plt.figure(figsize=(10, 10))
-plt.subplot(2, 1, 1)
-plt.scatter(X_pca2[:, 0], X_pca2[:, 1], c=y, cmap='tab10', s=10)
-plt.title("wiPCA - Zadanie 3.")
-plt.xlabel("PC1")
-plt.ylabel("PC2")
-plt.colorbar()
-
-plt.subplot(2, 1, 2)
-plt.scatter(X_pcaOrig[:, 0], X_pcaOrig[:, 1], c=y, cmap='tab10', s=10)
-plt.title("libPCA - Zadanie 3.")
-plt.xlabel("PC1")
-plt.ylabel("PC2")
-plt.colorbar()
-
-plt.savefig("plots/plot_LAB07_03.png")
-plt.show()
 
 # c) Krzywa wariancji
 _, _, eigVals, _ = wiPCA(X, X.shape[1])
-explained_variance_ratio = eigVals / np.sum(eigVals)
+explainedVarianceRatio = eigVals / np.sum(eigVals)
 
-plt.plot(np.cumsum(explained_variance_ratio))
+plt.plot(np.cumsum(explainedVarianceRatio))
 plt.title("Kumulatywna wariancja (Digits)")
 plt.xlabel("Liczba komponentów")
 plt.ylabel("Kumulatywna wariancja")
@@ -128,23 +113,43 @@ plt.grid()
 plt.savefig("plots/plot_LAB07_04.png")
 plt.show()
 
-# d) Estymacja błędu
-def pca_inverse(X_reduced, components, mean_vec):
-    return X_reduced @ components.T + mean_vec
+# d)
+plt.figure(figsize=(10, 8))
+plt.subplot(2, 1, 1)
+plt.scatter(Xpca[:, 0], Xpca[:, 1], c=y, cmap='tab10')
+plt.title("wiPCA - Zadanie 3.")
+plt.xlabel("PC1")
+plt.ylabel("PC2")
+plt.colorbar()
 
-reconstruction_errors = []
-components_range = range(1, 65)
+plt.subplot(2, 1, 2)
+plt.scatter(XpcaOrig[:, 0], XpcaOrig[:, 1], c=y, cmap='tab10')
+plt.title("libPCA - Zadanie 3.")
+plt.xlabel("PC1")
+plt.ylabel("PC2")
+plt.colorbar()
 
-for n in components_range:
-    X_red, comps, _, mean = wiPCA(X, n)
-    X_rec = pca_inverse(X_red, comps[:, :n], mean)
+plt.tight_layout()
+plt.savefig("plots/plot_LAB07_03.png")
+plt.show()
+
+# e) Estymacja błędu
+def invPCA(XReduced, components, meanVec):
+    return XReduced @ components.T + meanVec
+
+errors = []
+dims = range(1, 65)
+
+for dim in dims:
+    X_red, comps, _, mean = wiPCA(X, dim)
+    X_rec = invPCA(X_red, comps[:, :dim], mean)
     error = np.mean(np.linalg.norm(X - X_rec, axis=1))
-    reconstruction_errors.append(error)
+    errors.append(error)
 
-plt.plot(components_range, reconstruction_errors)
-plt.title("Średni błąd rekonstrukcji (Digits)")
-plt.xlabel("Liczba komponentów")
-plt.ylabel("Błąd rekonstrukcji")
+plt.plot(dims, errors)
+plt.title("Błąd rekonstrukcji")
+plt.xlabel("Składowe")
+plt.ylabel("Błąd")
 plt.grid()
 plt.savefig("plots/plot_LAB07_05.png")
 plt.show()
