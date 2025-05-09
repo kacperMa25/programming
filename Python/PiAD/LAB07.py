@@ -105,8 +105,8 @@ _, _, eigVals, _ = wiPCA(X, X.shape[1])
 explainedVarianceRatio = eigVals / np.sum(eigVals)
 
 plt.plot(np.cumsum(explainedVarianceRatio))
-plt.title("Kumulatywna wariancja (Digits)")
-plt.xlabel("Liczba komponentów")
+plt.title("Skumulowana wariancja")
+plt.xlabel("Numer składowej")
 plt.ylabel("Kumulatywna wariancja")
 plt.grid()
 
