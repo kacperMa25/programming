@@ -1,8 +1,0 @@
-[
-{
-  "directory": "/home/kacper/Programming/C_C++/Test/out/Debug",
-  "command": "/usr/bin/c++   -g -o CMakeFiles/Test.dir/main.cpp.o -c /home/kacper/Programming/C_C++/Test/main.cpp",
-  "file": "/home/kacper/Programming/C_C++/Test/main.cpp",
-  "output": "CMakeFiles/Test.dir/main.cpp.o"
-}
-]
