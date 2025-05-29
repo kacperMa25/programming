@@ -1,8 +1,0 @@
-[
-{
-  "directory": "/Users/kacper/git/programming/C_C++/SDL_movement/build",
-  "command": "/usr/bin/c++  -I/Users/kacper/git/programming/C_C++/SDL_movement/include -I/opt/homebrew/include  -arch arm64 -o CMakeFiles/SDL3Project.dir/main.cpp.o -c /Users/kacper/git/programming/C_C++/SDL_movement/main.cpp",
-  "file": "/Users/kacper/git/programming/C_C++/SDL_movement/main.cpp",
-  "output": "CMakeFiles/SDL3Project.dir/main.cpp.o"
-}
-]
