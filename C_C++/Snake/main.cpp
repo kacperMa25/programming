@@ -1,6 +1,8 @@
 #include "Snake.cpp"
 
 
+const int WINDOW_HEIGHT = 720;
+const int WINDOW_WIDTH = 640;
 SDL_Window* gWindow = NULL;
 SDL_Renderer* gRender = NULL;
 
@@ -8,7 +10,7 @@ bool init();
 
 void close();
 
-void processFrame(Snake& snake, const int* snakeColor, const int* bgColor);
+void processFrame(Snake& snake, const int* snakeColor, const int* bgColor, const SDL_FRect snakeView);
 
 int main() {
     if (init()){
@@ -18,8 +20,19 @@ int main() {
         SDL_Event e;
         Snake snake(3, 10);
         int color[] = {0x00, 0x00, 0x00, 0x00};
-        int bgColor[] = {0x00, 0xAA, 0x00, 0x00};
+        int bgColor[] = {0x80, 0xAA, 0x80, 0x00};
+        SDL_Rect snakeView;
+        snakeView.x = (WINDOW_WIDTH - GAME_WIDTH) / 2;
+        snakeView.y = (WINDOW_HEIGHT - GAME_HEIGHT) / 2;
+        snakeView.w = GAME_WIDTH;
+        snakeView.h = GAME_HEIGHT;
+        SDL_FRect snakeBg;
+        snakeBg.x = (WINDOW_WIDTH - GAME_WIDTH) / 2;
+        snakeBg.y = (WINDOW_HEIGHT - GAME_HEIGHT) / 2;
+        snakeBg.w = GAME_WIDTH;
+        snakeBg.h = GAME_HEIGHT;
         SDL_SetRenderDrawColor(gRender, bgColor[0], bgColor[1],  bgColor[2], bgColor[3]);
+        SDL_RenderFillRect(gRender, &snakeBg);
         SDL_RenderClear(gRender);
 
         snake.generateApple(gRender);
@@ -53,7 +66,7 @@ int main() {
 
                 }
             }
-            processFrame(snake, color, bgColor);
+            processFrame(snake, color, bgColor, snakeBg);
 
             uint64_t frameTime = SDL_GetTicks() - frameStart;
             if (frameTime < FRAME_DELAY){
@@ -89,7 +102,7 @@ void close(){
     SDL_Quit();
 }
 
-void processFrame(Snake& snake, const int* snakeColor, const int* bgColor){
+void processFrame(Snake& snake, const int* snakeColor, const int* bgColor, const SDL_FRect snakeBg){
 
     switch (snake.getDir()){
         case SDLK_UP:
@@ -107,6 +120,7 @@ void processFrame(Snake& snake, const int* snakeColor, const int* bgColor){
     }
 
     SDL_SetRenderDrawColor(gRender, bgColor[0], bgColor[1],  bgColor[2], bgColor[3]);
+    SDL_RenderFillRect(gRender, &snakeBg);
     SDL_RenderClear(gRender);
 
     snake.generateApple(gRender);

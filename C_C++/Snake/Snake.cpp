@@ -2,13 +2,13 @@
 #include <vector>
 #include <SDL3/SDL.h>
 
-const int WINDOW_WIDTH = 640;
-const int WINDOW_HEIGHT = 480;
+const int GAME_WIDTH = 360;
+const int GAME_HEIGHT = 360;
 bool appleExists = false;
 SDL_FRect apple;
 enum dir {
-    LEFT = SDLK_LEFT,
     RIGHT = SDLK_RIGHT,
+    LEFT = SDLK_LEFT,
     DOWN = SDLK_DOWN,
     UP = SDLK_UP
 };
@@ -38,8 +38,8 @@ class Snake{
     void dirRight();
 
     private:
-    const float originalPosX = WINDOW_WIDTH / 2;
-    const float originalPosY = WINDOW_HEIGHT / 2;
+    const float originalPosX = GAME_WIDTH / 2;
+    const float originalPosY = GAME_HEIGHT / 2;
     const float widthOfSqaure = 10;
     const float heightOfSqaure = 10;
     const int offset;
@@ -104,7 +104,7 @@ void Snake::up(){
 
 void Snake::down()
 {
-    if (squareList[0].y < WINDOW_HEIGHT - offset){
+    if (squareList[0].y < GAME_HEIGHT - offset){
         for (int i = size() - 1; i > 0; --i){
             squareList[i].x = squareList[i - 1].x;
             squareList[i].y = squareList[i - 1].y;
@@ -128,7 +128,7 @@ void Snake::left()
 
 void Snake::right()
 {
-    if (squareList[0].x < WINDOW_WIDTH - offset){
+    if (squareList[0].x < GAME_WIDTH - offset){
         for (int i = size() - 1; i > 0; --i){
             squareList[i].x = squareList[i - 1].x;
             squareList[i].y = squareList[i - 1].y;
@@ -170,8 +170,8 @@ bool Snake::checkIntersect(){
 
 void Snake::generateApple(SDL_Renderer*& gRender){
     if (appleExists == false){
-        float randomX = getRandomNumberWithStep(0, WINDOW_WIDTH - offset * 2, offset);
-        float randomY = getRandomNumberWithStep(0, WINDOW_HEIGHT - offset * 2, offset);
+        float randomX = getRandomNumberWithStep(0, GAME_WIDTH - offset * 2, offset);
+        float randomY = getRandomNumberWithStep(0, GAME_HEIGHT - offset * 2, offset);
 
         apple = {randomX, randomY, widthOfSqaure, heightOfSqaure};
         appleExists = true;
