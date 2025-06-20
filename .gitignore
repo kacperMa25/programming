@@ -1,4 +1,7 @@
 cmake-build-debug
 out
+build
+.zed
+.cache
 .idea
 .DS_Store
